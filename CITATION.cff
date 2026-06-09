@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use or reference STRATA Protocol in academic or professional work, please cite it using this metadata."
+type: software
+title: "STRATA Protocol"
+abstract: >
+  STRATA Protocol is a governed framework for structured, traceable, and
+  repeatable AI-assisted software delivery. It defines five layers of software
+  project governance — Classification, Derivation, Authority Chain, Execution
+  Loop, and Artifact Trail — that together ensure AI-generated output remains
+  auditable, aligned, and production-safe.
+authors:
+  - family-names: Pascual
+    given-names: Florante
+    alias: FlorantePascual
+    website: "https://florantepascual.com"
+version: "1.0.0"
+date-released: "2026-06-08"
+url: "https://strataprotocol.org"
+repository-code: "https://github.com/FlorantePascual/strata-protocol-docs"
+license: CC-BY-4.0
+keywords:
+  - AI-assisted development
+  - software governance
+  - delivery framework
+  - structured development
+  - audit trail
+  - AI engineering
+  - repeatable software delivery
