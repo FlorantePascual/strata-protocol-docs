@@ -30,8 +30,7 @@ STRATA Protocol was created by **[Florante Pascual](https://florantepascual.com)
 
 If you reference STRATA Protocol in academic or professional work, please cite this repository using the metadata in [`CITATION.cff`](./CITATION.cff).
 
-<!-- Replace PLACEHOLDER with the actual Zenodo DOI once archived -->
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/1263059137.svg)](https://doi.org/10.5281/zenodo.20939882)
 
 ## License
 
