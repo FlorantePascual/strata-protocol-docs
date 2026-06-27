@@ -28,6 +28,17 @@ The strata are not a checklist. They are a thinking sequence, an architectural s
 Traverse the strata in order: 1 → 2 → 3 → 4 → 5. Each stratum consumes the output of the one before it. Stratum 5 is only possible because Stratum 4 produced traceable artifacts — which is only possible because Stratum 3 established a governed mandate — which is only possible because Stratum 2 derived a complete knowledge base — which is only possible because Stratum 1 classified correctly.
 ::
 
+The same five strata, modeled as a live system you can explore — drill into any stratum to see the roles and acts inside it.
+
+::fractal-canvas
+---
+src: https://strataprotocol.org/lib/diagrams/strata-protocol.fractal
+mode: readonly
+title: The Five Strata — Interactive Protocol Model
+height: 560
+---
+::
+
 ## Explore the Strata
 
 ::card-group

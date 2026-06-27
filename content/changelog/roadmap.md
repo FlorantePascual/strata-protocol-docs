@@ -8,7 +8,7 @@ authors:
   - name: "Florante Pascual"
     url: "https://florantepascual.com"
     avatar: "https://strataprotocol.org/lib/author/florante-pascual.png"
-date: "2026-05-27"
+date: "2026-06-26"
 ---
 
 :status-badge{status="stable"}
@@ -25,6 +25,7 @@ Everything listed here is live and complete for public or member access today.
 - [The Five Strata](/documentation/the-strata) — Complete narrative for all five strata: Classification, Derivation, Authority Chain, Execution Loop, Artifact Trail.
 - [Core Concepts](/documentation/concepts) — The governing principles that run through all five strata.
 - [Reference Glossary](/documentation/reference/full-glossary) — Full canonical definitions for every key term.
+- [Cite the Framework](/documentation/citation) — APA and BibTeX citation strings with the live Zenodo DOI.
 - [Developer Toolkit](/documentation/developer-toolkit) — Public preview of the member Developer Guide: platform architecture, governed delivery workflow, and implementation-flow diagrams.
 
 **Deep Dives** — member access (customer)
@@ -34,10 +35,27 @@ Everything listed here is live and complete for public or member access today.
 - [Stratum 4 — Execution Loop Deep Dive](/documentation/deep-dives/stratum-4-execution-loop)
 - [Stratum 5 — Artifact Trail Deep Dive](/documentation/deep-dives/stratum-5-artifact-trail)
 
+**Developer Guide — Implementation Templates** — public funnel + member access (customer)
+- Public funnel: [Introduction](/developer-guide/introduction) and the [Developer Toolkit](/documentation/developer-toolkit) preview.
+- Member templates: complete Nuxt/Docus, NestJS Backend, and Vue Frontend feature templates, plus getting-started, architecture, and reference pages.
+
+**AI Playbook** — public + member access (customer)
+- [Introduction](/ai-playbook/introduction) and [Core Concepts](/ai-playbook/concepts) — public.
+- Thirteen member governance prompts — a guided prompt set for each of the five strata.
+
+**Case Studies** — public + member access (customer / partner)
+- [StrataProtocol.org](/case-studies/strataprotocol-org) — the public self-referential proof: overview, artifact trail, and template index linking to the platform's own governed records.
+- Public summaries for [Fractal OSI](/case-studies/fractal-osi), [One Verse Daily](/case-studies/one-verse-daily), and [AI9GM](/case-studies/ai9gm), each with a member-gated full study (customer) and development journal (partner).
+
+**Engage** — public
+- [Services & Engagement](/engage) and the [qualification flow](/apply) — member access granted through a free discovery call.
+
 **Platform Infrastructure** — complete
-- Authentication system: secure sessions, invitation-based member provisioning.
+- Authentication, membership, and admin user management with full audit logging.
 - Dual-layer content protection: browser route guard + server-side Content API guard.
-- Self-referential governance artifact trail in `docs/strata/`.
+- PostgreSQL database on a stateless application container; production Docker deployment stack.
+- Legal framework: Terms, Privacy, Cookie, Acceptable Use, and Refund & Billing policies (linked in the footer).
+- Self-referential governance artifact trail in `docs/strata/`, published publicly via [Case Study #1](/case-studies/strataprotocol-org).
 
 ---
 
@@ -45,16 +63,11 @@ Everything listed here is live and complete for public or member access today.
 
 Sections rolling out incrementally — partial value available today, more being added actively.
 
-**AI Playbook** — in progress
-- [Introduction](/ai-playbook/introduction) and [Core Concepts](/ai-playbook/concepts) available now.
-- Member-only guided prompt sets for each stratum: in development (REQ-007).
-
-**Case Studies** — early access
-- Section structure and four project profiles scaffolded: [StrataProtocol.org](/case-studies/strataprotocol-org), [AI9GM](/case-studies/ai9gm), [Fractal OSI](/case-studies/fractal-osi), [One Verse Daily](/case-studies/one-verse-daily).
-- Full narrative write-ups in progress (REQ-013).
+**Case Studies — depth** — early access
+- Case #1 (StrataProtocol.org) is complete and public; the three third-party studies — summaries public, full studies and journals member-gated — carry an Early Access badge as their depth expands.
 
 **Marketplace** — expanding
-- Partner directory structure live; Implementation Partner, Advisory Services, Templates, and Developer Tools categories available.
+- Partner directory structure live: Implementation Partners, Advisory Services, Templates, and Developer Tools categories.
 - Transactional listing system and premium tier planned in a future release.
 
 **[Platform Updates](/changelog/updates)** — early access
@@ -65,12 +78,6 @@ Sections rolling out incrementally — partial value available today, more being
 ## Planned
 
 Not yet started — on the confirmed roadmap.
-
-**Developer Guide** — planned (REQ-006)
-- Full implementation template library: Nuxt/Docus feature templates, NestJS/Vue patterns, and additional stacks.
-- Guided workflows: step-by-step worked examples for each stratum.
-- Reference architecture with annotated decision records.
-- Preview available now on the public [Developer Toolkit](/documentation/developer-toolkit) page.
 
 **Video Courses** — planned
 - Five-stratum video walkthrough series.
@@ -85,17 +92,23 @@ Not yet started — on the confirmed roadmap.
 
 ## Recently Shipped
 
-**2026-05-27 — REQ-005C: WIP Messaging & Progressive Launch**
-Converted all incomplete section placeholders into intentional, value-bearing previews. Added `StatusBadge` component and this Roadmap page. Platform is now fully public-launch ready.
+**2026-06-25 — REQ-013: Self-Referential Artifact Trail**
+The Case Studies section is live — StrataProtocol.org's own construction published as a public, navigable self-referential proof, plus three pre-STRATA case studies on a tiered proof-asset ladder (public summary → member full study → partner journal).
 
-**2026-05-27 — REQ-005B: Strata SVG Diagrams, Light Mode, Font Fix**
-All five STRATA diagrams shipped as adaptive single-file SVGs (light + dark mode). Light-mode contrast and font-stack issues resolved across the platform.
+**2026-06-24 — REQ-011: Documentation Platform Quality**
+Foundational operating rules locked as CI-enforced invariants (SSR-only, bundled dependencies, midnight theme); performance and font posture verified; mobile rendering polished.
 
-**2026-05-27 — REQ-005: Member Deep-Dive Documentation**
-All five stratum deep-dives published for member access — complete procedural guides from classification through artifact preservation.
+**2026-06-17 — REQ-020: Legal Framework**
+Five legal policies, clickwrap consent on registration and login, and a footer legal-links row — all from a single configuration source, zero new dependencies.
 
-**2026-05-19 — v0.1.0: Initial Platform Launch**
-Complete Nuxt 4 / Docus documentation portal. Five-stratum public documentation structure. Authentication, dual-layer RBAC, and self-referential governance artifacts.
+**2026-06-09 — REQ-012: PostgreSQL Migration & Docker Deployment**
+Database pivoted from SQLite to PostgreSQL on a stateless application container, with a production Docker stack.
+
+**2026-06-08 — REQ-017: Authorship & SEO Identity**
+Verifiable authorship and structured SEO metadata (WebSite, TechArticle, and Person JSON-LD) across every page, plus an `/about` identity hub.
+
+**2026-06-05 — REQ-014: Qualified Engagement**
+Subscription billing replaced with a qualified-access consulting model: member access granted through a free discovery call.
 
 See [Changelog](/changelog) for the full version history.
 
