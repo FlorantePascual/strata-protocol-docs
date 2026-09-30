@@ -12,11 +12,21 @@
 
 This repository contains the publicly available framework documentation and governance artifacts for the STRATA Protocol:
 
-- **Framework specification** — The five-stratum model, its rules, and governance principles
-- **Case studies** — Real-world applications across different domains and technology stacks
-- **Core documentation** — Getting started guides, core concepts, and reference material
+- **[`docs/protocol/`](./docs/protocol/)** — The protocol overview: the five-stratum model, its governing principles, and what changed in this version
+- **[`content/`](./content/)** — The public pages of [strataprotocol.org](https://strataprotocol.org) in their source form: getting started, core concepts, the five strata, and reference material. A page available only to members is represented by a short placeholder that describes it and links to it on the site
+- **[`docs/strata/`](./docs/strata/)** — A folder template showing what a governed project's `docs/strata/` contains, populated with historical artifacts from the development of strataprotocol.org itself
+- **[`docs/_templates/`](./docs/_templates/)** — Overviews of the implementation-template prompt sequences
 
 Implementation templates, AI prompt guides, and the full developer guide are available to members at [strataprotocol.org](https://strataprotocol.org).
+
+## Versions
+
+Each release of this repository is archived on Zenodo under one concept DOI, which always resolves to the latest release. Release numbers are `MAJOR.MINOR.PATCH`: `MAJOR.MINOR` is the protocol version, and `PATCH` counts revisions to this repository that leave the protocol text unchanged.
+
+| Release | Protocol | Notes |
+|---|---|---|
+| **1.1.0** | v1.1 | Retroactive release of v1.1, stamped 2026-08-06. The protocol overview in `docs/protocol/` is a reconstruction; see [`docs/protocol/PROVENANCE.md`](./docs/protocol/PROVENANCE.md). The site pages in `content/` still present v1.0, as the site did when v1.1 was stamped |
+| 1.0.0 | v1.0 | Initial public release, 2026-06-26 |
 
 ## Author
 

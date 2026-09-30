@@ -14,8 +14,8 @@ authors:
     alias: FlorantePascual
     orcid: "https://orcid.org/0009-0007-7267-9031"
     website: "https://florantepascual.com"
-version: "1.0.0"
-date-released: "2026-06-26"
+version: "1.1.0"
+date-released: "2026-09-30"
 url: "https://strataprotocol.org"
 repository-code: "https://github.com/FlorantePascual/strata-protocol-docs"
 license: CC-BY-4.0
