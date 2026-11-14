@@ -44,10 +44,14 @@ The thinking sequence that enforces dependency order on all Stratum 2 work. Each
 | 3 | How — Functional | How will users interact with it? | Functional Specifications |
 | 4 | How — Technical | How will it be built? | Architecture |
 | 5 | How — Quality | How do we ensure robustness? | NFR & Quality Plan |
-| 6 | How — Transition | How do we migrate safely? | Migration Strategy |
+| 6 | How — Transition | How do we transition safely, in or out? | Transition Strategy |
 | 7 | How — Execution | How do we deliver? | Roadmap & Delivery Plan |
 
 Layers 1–2 are the *strategic* layers — business language, no implementation detail. Layers 3–5 are the *design* layers — bridging business intent and engineering behavior. Layers 6–7 are the *delivery* layers — continuity, risk, and sequencing.
+
+### Layer 6 Runs Both Ways
+
+Layer 6 is Transition, and transition runs in two directions. **Inbound** is migration: moving off a predecessor system without damaging the business, which is the usual Class 2 case. **Outbound** is handover and upgrade: how a recipient takes the system, runs it, and stays able to receive your fixes, which can apply to a project of either class. A greenfield project that hands its system to a customer, a client, or an internal team has real Layer 6 content. Stub the inbound half when there is nothing to migrate from. Do not stub the layer.
 
 ### Document Dependency Order
 
@@ -56,6 +60,42 @@ The 14 normative documents produced by Stratum 2 are produced in dependency orde
 A lower-layer document that contradicts a higher one is not a standalone error. It is a signal that the higher-layer document is incomplete or incorrect. The correct response is to return to the higher layer, revise it, and re-derive the lower one — not to resolve the contradiction locally in the lower document.
 
 Documents are not finalized by completion. They are finalized by surviving challenge.
+
+Each derivation gets its own numbered folder under `docs/strata/2.derivation/`, not a single file, because at real scale a derivation is several files. Name each file inside its folder for its content:
+
+```
+docs/strata/2.derivation/
+├── 01-vision/                       project manifesto (optional) + vision & business case
+├── 02-current-system/               Class 2 only
+├── 03-brd/                          business requirements, BR-NNN
+├── 04-prd/                          product requirements, PRD-NNN, and Feature Releases, FR-NNN
+├── 05-functional-spec/              may be absorbed into 04
+├── 06-nfr/
+├── 07-target-architecture/          with its ADRs
+├── 08-api-data-contracts/
+├── 09-transition-strategy/          Layer 6, both directions
+├── 10-risk-dependency-analysis/
+├── 11-engineering-standards/        engineering manifesto (optional) + standards
+├── 12-testing-strategy/
+├── 13-devops-deployment-plan/
+└── 14-master-implementation-plan/   optional
+```
+
+Two documents are conditional. Document 05, the Functional Specification, may be absorbed into document 04, because per-feature flows, states, and edge cases belong next to the acceptance criteria that test them. Document 14, the Master Implementation Plan, is optional on a project whose delivery sequence is already fixed upstream; where it exists, it sequences milestones rather than individual releases. The tree also holds two manifestos, and they sit at different nodes of the [authority chain](/documentation/the-strata/stratum-3-authority-chain): the project manifesto beside the vision states what gets built, and the engineering manifesto at the root of the standards states how it gets built.
+
+### Requirements in Three Tiers
+
+A requirement's identifier names the document it lives in. Business requirements (`BR-NNN`) live in document 03 and state what the business needs. Product requirements (`PRD-NNN`) live in document 04 and state what the system must do, each one a single statement that one test can pass or fail. A single statement is not something a human can demonstrate and sign off, so document 04 also bundles product requirements into the units that get gated:
+
+| Tier | Test |
+|---|---|
+| `PRD-NNN` | A single verifiable statement. One test can pass or fail it |
+| **`FR-NNN` — Feature Release** | The smallest set of `PRD-NNN` that can be deployed and demonstrated together in one execution cycle |
+| **Milestone** | The smallest set of Feature Releases that reaches a state the human engineer would call a working increment |
+
+The [Feature Release](/documentation/reference#feature-release) is the unit the Execution Loop runs against. It is named for the outcome it delivers rather than the mechanism it uses: `FR-002-document-ingestion-and-search`, never `FR-002-lancedb-integration`.
+
+Document 04 carries scope, acceptance criteria, dependencies, and constraints. It does not carry the analysis or the phased implementation plan. Those are written in Stratum 4, when the Feature Release's session opens, with the accumulated context of every prior session. A plan derived months earlier is a plan written without the deviations the Execution Loop exists to feed forward.
 
 ### Generate → Iterate → Finalize
 
@@ -73,9 +113,9 @@ Every Stratum 2 document passes through three stages before it is normative:
 
 ### Classification Sensitivity
 
-Not all layers produce equally weighted documents for every project type. The Classification Record from Stratum 1 determines the depth and criticality of each layer.
+Not all layers produce equally weighted documents for every project type. Each layer has a default depth keyed on the class, and the Classification Record from Stratum 1 carries a depth directive that overrides the default per layer, with a stated reason.
 
-A **Class 1 Greenfield MVP** stubs or skips Layer 6 (Migration Strategy) — not because migration is unimportant in principle, but because there is nothing to migrate from. A **Class 2 Established System** treats Layer 6 as a first-class risk surface. Its architecture decisions are business continuity decisions; its migration strategy requires the same rigor as its architecture document.
+A **Class 1 Greenfield MVP** stubs the inbound half of Layer 6 (Transition) — not because migration is unimportant in principle, but because there is nothing to migrate from. A **Class 2 Established System** treats Layer 6 as a first-class risk surface. Its architecture decisions are business continuity decisions; its transition strategy requires the same rigor as its architecture document. The class default is only a default: a Category 1.3 platform with no continuity obligations can still need full Layer 4 and Layer 5 depth, because its constraint is irreversibility. Apply the record's directive, not the class default, whenever the two disagree.
 
 ## How Practitioners Apply It
 
@@ -83,7 +123,7 @@ A **Class 1 Greenfield MVP** stubs or skips Layer 6 (Migration Strategy) — not
 
 ### Begin with the Classification Record
 
-Load the signed Classification Record from Stratum 1. This is the highest-authority document in the derivation chain. Every subsequent document traces to it — the classification determines which layers are full, lightweight, or stubbed.
+Load the signed Classification Record from Stratum 1. This is the highest-authority document in the derivation chain. Every subsequent document traces to it — its depth directive determines which layers are full, lightweight, or stubbed.
 
 ### Derive Layer 1 — Vision & Business Case
 
@@ -113,6 +153,8 @@ The deeper failure: the document set is internally inconsistent, and no one know
 
 ## StrataProtocol.org Example
 
+This platform was built under STRATA Protocol v1.0, which numbered requirements `REQ-NNN`, and its records keep those identifiers; FR-001 is its first [Feature Release](/documentation/reference#feature-release) under STRATA Protocol v1.2.
+
 The `docs/strata/2.derivation/` directory is the complete Stratum 2 output for this platform — 14 normative documents produced in dependency order.
 
 The derivation chain for this platform is intact and navigable: the Vision & Business Case established the north star; the Business Requirements (BRD) translated it into numbered business requirements; the Product Requirements (PRD) translated those into numbered product requirements, each with its own phased implementation plan; the Engineering Standards and Testing Standards defined how code would be written and verified.
@@ -134,6 +176,6 @@ links:
 
 ## Related Strata
 
-**← Previous:** [Stratum 1 — Classification](/documentation/the-strata/stratum-1-classification) — provides the Classification Record that is Stratum 2's first and highest-authority input. The classification determines document depth, layer weighting, and which documents are required versus stubbed.
+**← Previous:** [Stratum 1 — Classification](/documentation/the-strata/stratum-1-classification) — provides the Classification Record that is Stratum 2's first and highest-authority input. The record's depth directive determines document depth, layer weighting, and which documents are required versus stubbed.
 
-**→ Next:** [Stratum 3 — Authority Chain](/documentation/the-strata/stratum-3-authority-chain) — consumes the finalized Stratum 2 documents to construct the five-node authority chain. The operative constitution (`.github/copilot-instructions.md`) aggregates essential constraints from the derivation document set into the AI copilot's mandate.
+**→ Next:** [Stratum 3 — Authority Chain](/documentation/the-strata/stratum-3-authority-chain) — consumes the finalized Stratum 2 documents to construct the five-node authority chain. The operative constitution, issued as one edition per AI agent, aggregates essential constraints from the derivation document set into each agent's mandate.

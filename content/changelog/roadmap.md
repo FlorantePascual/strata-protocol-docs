@@ -3,7 +3,7 @@ title: Platform Roadmap
 description: Where StrataProtocol.org stands today — what is live, what is actively being built, and what is planned next.
 status: stable
 navigation:
-  order: 2
+  order: 3
 authors:
   - name: "Florante Pascual"
     url: "https://florantepascual.com"
@@ -26,6 +26,7 @@ Everything listed here is live and complete for public or member access today.
 - [Core Concepts](/documentation/concepts) — The governing principles that run through all five strata.
 - [Reference Glossary](/documentation/reference/full-glossary) — Full canonical definitions for every key term.
 - [Cite the Framework](/documentation/citation) — APA and BibTeX citation strings with the live Zenodo DOI.
+- [Protocol Version History](/changelog/protocol-versions) — Every STRATA Protocol version and release, what changed in each, and how to upgrade a project from STRATA Protocol v1.0.
 - [Developer Toolkit](/documentation/developer-toolkit) — Public preview of the member Developer Guide: platform architecture, governed delivery workflow, and implementation-flow diagrams.
 
 **Deep Dives** — member access (customer)
@@ -41,7 +42,7 @@ Everything listed here is live and complete for public or member access today.
 
 **AI Playbook** — public + member access (customer)
 - [Introduction](/ai-playbook/introduction) and [Core Concepts](/ai-playbook/concepts) — public.
-- Thirteen member governance prompts — a guided prompt set for each of the five strata.
+- Fifteen member governance prompts — a guided prompt set for each of the five strata.
 
 **Case Studies** — public + member access (customer / partner)
 - [StrataProtocol.org](/case-studies/strataprotocol-org) — the public self-referential proof: overview, artifact trail, and template index linking to the platform's own governed records.

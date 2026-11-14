@@ -128,7 +128,7 @@ Each new project generates a fresh authority chain, derived from that project's 
 
 ### Stratum 4 — Execution loop
 
-_Phased, per-requirement development. No phase advances without human sign-off._
+_Phased, per-release development. No phase advances without human sign-off._
 
 STRATA's execution model is a loop, not a pipeline. Each Feature Release moves through its phases independently. Each phase is a governed cycle, not a single call.
 
@@ -249,54 +249,22 @@ STRATA
 
 ---
 
-## What changed in v1.1
+## Version history
 
-v1.1 absorbs 33 findings from the first full application of the protocol to a production
-project: a Class 1 category 1.3 platformization build, delivered as a monorepo of eight
-applications across three ownership layers. Five were self-contradictions in the v1.0 text.
-The rest are places the protocol was consistent and did not fit.
+**Current: v1.2.** The full history, with what changed at each version and what a
+project derived against an earlier one has to do about it, is in
+[`CHANGELOG.md`](CHANGELOG.md). It is the one home for that record; this file
+does not restate it.
 
-**Corrections to the v1.0 text**
+| Version | Absorbs |
+|---|---|
+| **v1.2** | Seven corrections. Six finish the `REQ-NNN` retirement v1.1 started. The seventh replaces four named build commands with the four properties they were standing in for, and is the only change in v1.2 that affects conformance |
+| v1.1 | 33 findings from the first full application of the protocol to a production project, a Class 1 category 1.3 platformization build delivered as a monorepo of eight applications across three ownership layers |
 
-- Documents 10 and 11 were swapped between the dependency map and the document sections. Document 10 is Risk & Dependency Analysis. Document 11 is Engineering Standards.
-- Document 01 carried three names. It is the Vision & Business Case, and the Modernization Charter is a Class 2 section inside it.
-- The Stratum 2 file path in prose disagreed with the tree beside it, in two files.
-- The README and Stratum 2 disagreed on Layer 2's vocabulary.
-- `00-manifesto.md` sat in the Stratum 2 tree with no author, no content definition and a number it did not need.
-
-**Structural changes**
-
-- **One folder per derivation, not one file.** `NN-{name}/`, with each file inside named for its content.
-- **Depth is set on the classification record.** The class-keyed depth table is a default that the record overrides per layer with a stated reason. Categories, not just classes, drive depth.
-- **Layer 6 is Transition and runs both ways.** Inbound migration and outbound handover. A greenfield project that hands its system to a recipient has real Layer 6 content.
-- **`REQ-NNN` is now `PRD-NNN`**, and two tiers sit below it: the **Feature Release** as the gated unit, and the **milestone** as the group that reaches a demonstrable increment.
-- **Requirement identifiers may carry a domain segment**, under one rule: segment by what is stable, never by what the project is designed to change.
-- **The analysis and the phased implementation plan move to Stratum 4**, written when a session opens rather than months earlier.
-- **The Stratum 4 session path mirrors the derivation path**, so a specification and its execution record are a mechanical substitution.
-- **Quality flows in three stages**: business impact in document 03, detailed targets in document 04, consolidation in document 06. Every edge runs downhill.
-- **Document 05 may be absorbed into document 04**, leaving a required redirect stub.
-- **Document 12 does not merge into document 11.** Prescription and strategy split.
-- **Document 14 is renamed Master Implementation Plan and is optional.** When written, it sequences milestones rather than individual releases.
-- **Business requirement to product requirement is zero-to-many**, with a discharge table making the zero case visible.
-- **Two manifestos, at different nodes**, each with a named author and a home.
-- **Every Authority Chain node names a source document.**
-- **Node 5 is the operative constitution, not `.github/copilot-instructions.md`.** That path was one vendor's convention standing in for the node itself, which broke on every project running Claude Code, Cursor or more than one agent at once. Node 5 is now **one constitution issued as one edition per agent**, because the agent formats are not interchangeable and a single file copied to all of them would be wrong in most. Masters sit under `3.authority-chain/` in a tree mirroring the deployed paths. **Fidelity** governs master to deployed copy, **parity** governs edition to edition, and parity is checked mechanically rather than maintained as a table. The constitution set is declared on the classification record.
-- **The derivation output does not have to live in the code repository.** Three passages assumed it did. A project whose `docs/` tree ships to a documentation platform, or is deliberately kept out of the repo, is a supported topology, and it makes the version stamp on each deployed edition load-bearing rather than decorative.
-- **Parity begins at Stratum 3, and the constitution set carries a state.** The set is declared at Stratum 1 and brought to parity at Stratum 3. Between those points the editions are unsynchronized by default, which is expected rather than a defect, and a session opened in that window is anchored to whatever its agent loaded rather than to a verified chain. Each edition records whether it is declared, authored, at parity or deployed. A deployed edition that is not at parity is the dangerous one, because it loads and looks authoritative.
-
-**Organizing a split document 04**, all of it conditional on the split having happened. A
-project that keeps one file needs none of it.
-
-- **The register is two files.** A build sequence holding one row per Feature Release, and a README holding the vocabulary, the milestone grouping, the ordering rationale and the coverage check. An attribute lives in one of them and the other cites it.
-- **The register states one total build order**, because `Depends on` gives only a partial one and the execution loop consumes a total one.
-- **The Feature Release identifier is the step number**, fixed before the first commit trailer carries it. That is the only moment renumbering is free.
-- **Where the partial order leaves freedom, order by what is irreversible**, and size milestones so each is a contiguous run of the sequence.
-- **The capability partition leaves the platform foundation unowned.** It is not a capability, so it takes a release of its own, first in the sequence and tagged `enabling`.
-- **Every capability document is written before any Feature Release record**, because a boundary is provisional until the document that consumes its reservations exists.
-
-The findings register that produced this version, including which are defects and which are
-refinements, is maintained separately by the practitioner who ran the engagement.
+The findings registers that produced each version are kept at
+[`change-history/`](change-history/), one file per pass, with the reasoning
+behind every change.
 
 ---
 
-_[StrataProtocol.org](https://strataprotocol.org/) · STRATA Protocol v1.1_
+_[StrataProtocol.org](https://strataprotocol.org/) · STRATA Protocol v1.2_

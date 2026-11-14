@@ -19,12 +19,12 @@ The Developer Guide is the implementation layer of the STRATA Protocol — where
 
 The STRATA Protocol reference platform — StrataProtocol.org itself — is a Nuxt 4 / Docus SSR application. Four distinct layers handle content, presentation, utilities, and server-side request processing:
 
-::strata-diagram{name="devguide_architecture" alt="Reference architecture: four horizontal layers — Content layer (Markdown and MDC pages), App layer (Vue components, composables, app middleware), Shared layer (pure TypeScript utilities), Server layer (Nitro API routes and Content Guard RBAC). A SQLite store and sealed HttpOnly session cookie are connected to the Server layer."}
+::strata-diagram{name="devguide_architecture" alt="Reference architecture: four horizontal layers — Content layer (Markdown and MDC pages), App layer (Vue components, composables, app middleware), Shared layer (pure TypeScript utilities), Server layer (Nitro API routes and Content Guard RBAC). A PostgreSQL database and sealed HttpOnly session cookie are connected to the Server layer."}
 ::
 
 Content lives at the top as Markdown and MDC pages — the source material. The App layer renders content through Vue components and composables, with app middleware enforcing client-side route guards. The Shared layer provides pure TypeScript utilities consumed by both App and Server. The Server layer runs Nitro API routes and the content guard — a server-side RBAC middleware that validates the user's session role before serving protected content.
 
-External state is kept minimal: a SQLite database for member records and a sealed HttpOnly session cookie for authentication. No third-party auth services. No session data exposed to the client.
+External state is kept minimal: a PostgreSQL database for member records, running in its own container beside a stateless application, and a sealed HttpOnly session cookie for authentication. No third-party auth services. No session data exposed to the client.
 
 ## Governed Delivery Workflow
 
@@ -67,7 +67,7 @@ The Developer Guide template library is being built incrementally under REQ-006.
 - Nuxt / Docus documentation platform templates — the reference stack shown above
 - NestJS / Vue application templates with STRATA governance wired in
 - Guided worked examples: one complete project from classification through artifact trail
-- Stack-specific authority chain mandates for GitHub Copilot, Cursor, and Claude Code
+- Operative constitution editions for GitHub Copilot, Cursor, and Claude Code, held at parity
 
 See the [Platform Roadmap](/changelog/roadmap) for the current build state of each template set.
 

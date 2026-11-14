@@ -42,10 +42,10 @@ skills:
   - Angular
   - NestJS
 portfolio:
-  - label: StrataProtocol.org
-    to: https://strataprotocol.org
+  - label: FlorantePascual.com/work
+    to: https://florantepascual.com/work
 ctaLabel: Book a free discovery call
-to: https://florantech.com/book-your-free-30-minute-consultation/
+to: https://florantepascual.com/contact
 ---
 ::
 
@@ -88,7 +88,7 @@ Tooling and extensions for practitioners building with the STRATA Protocol — r
 
 ::card-group
   ::card{title="Platform Reference Stack" icon="i-ph-stack" to="/documentation/concepts"}
-  The full reference stack used to build StrataProtocol.org: Nuxt 4, Docus, nuxt-auth-utils, and better-sqlite3 — documented and annotated.
+  The full reference stack used to build StrataProtocol.org: Nuxt 4, Docus, nuxt-auth-utils, and PostgreSQL with Drizzle ORM — documented and annotated.
   ::
   ::card{title="AI Tool Configuration Patterns" icon="i-ph-robot" to="/documentation/the-strata/stratum-3-authority-chain"}
   Authority chain mandates and operative constitution patterns for GitHub Copilot, Cursor, and Claude Code — ready to adapt to your project.

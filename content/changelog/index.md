@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: STRATA Protocol version history — platform updates, methodology changes, and new feature releases.
+description: StrataProtocol.org release history — platform updates, content releases, and methodology changes. Protocol versions have their own history page.
 status: stable
 navigation:
   order: 0
@@ -13,7 +13,38 @@ date: "2026-06-06"
 
 :status-badge{status="stable"}
 
-The complete version history for StrataProtocol.org — every platform update, content release, and methodology change. Built entirely under the STRATA Protocol it documents, StrataProtocol.org progressed from bootstrap to a production-grade documentation portal — authentication, a PostgreSQL-backed deployment, member implementation templates, AI governance prompts, a legal framework, and a self-referential case-study trail — in five weeks across twenty-two governed requirements. For the current state of each section and what's planned next, see the [Platform Roadmap](/changelog/roadmap).
+The complete version history for StrataProtocol.org — every platform update, content release, and methodology change. Built entirely under the STRATA Protocol it documents, StrataProtocol.org progressed from bootstrap to a production-grade documentation portal — authentication, a PostgreSQL-backed deployment, member implementation templates, AI governance prompts, a legal framework, and a self-referential case-study trail — in five weeks across twenty-two governed requirements. It has since moved to STRATA Protocol v1.2, delivered as its first Feature Release, FR-001. For the current state of each section and what's planned next, see the [Platform Roadmap](/changelog/roadmap). For the versions of the STRATA Protocol itself, see the [Protocol Version History](/changelog/protocol-versions).
+
+---
+
+## 2026-11-14 — FR-001: STRATA Protocol v1.2
+
+**The framework documentation now teaches STRATA Protocol v1.2, archived as release 1.2.0 — the first substantive revision the site has presented since publication, shaped by production use of the protocol across several projects.**
+
+FR-001 carries STRATA Protocol v1.2 across every surface: the public stratum narratives, the member deep-dives, the glossary, the AI Playbook, the implementation templates, the architecture visuals, the public repository, and the citation record. It is also the first release of this platform numbered under the vocabulary of STRATA Protocol v1.2: a Feature Release, where the twenty-two requirements before it were numbered `REQ-000` to `REQ-021` and stay that way as the record. Projects derived against STRATA Protocol v1.0 should read the [upgrade guide](/changelog/protocol-versions) — neither release 1.1.0 nor release 1.2.0 is a drop-in revision.
+
+### What Changed in the Protocol
+
+- **Feature Releases replace numbered requirements as the gated unit:** business requirements (`BR`) flow to product requirements (`PRD`), and the execution loop runs against Feature Releases (`FR`), grouped into milestones
+- **The operative constitution is one node issued in several editions:** one per AI agent (`CLAUDE.md`, `.github/copilot-instructions.md`, `.cursor/rules/`, `AGENTS.md`), mastered once and kept at parity
+- **Verification states properties, not commands:** static type check, lint, automated tests, production build; each project names its own commands
+- **Planning moves to execution:** the analysis and phased implementation plan are written when a release's session opens, against everything learned so far
+- **Session records mirror the specification tree**, and the artifact count checks coverage per release
+
+### What Was Delivered
+
+- **Protocol Version History** (`/changelog/protocol-versions`, public): every protocol version and release, the release mapping, what changed in each, and an upgrade path from STRATA Protocol v1.0
+- **Public documentation** conformed to STRATA Protocol v1.2: the five stratum pages and the cross-cutting pages now teach the Feature Release tiers, Layer 6 as Transition in both directions, one folder per derivation document, the constitution in editions, verification by property, and the mirrored session path. The examples drawn from this platform's own build keep their history and say once that FR-001 is its first Feature Release
+- **Glossary:** the public key terms stay at twelve, with Feature Release replacing Session, and node 5 of the authority chain is defined as the operative constitution, issued in editions; the member glossary grows from 46 to 60 terms
+- **Member deep-dives and AI Playbook** conformed across twelve member pages: the five deep-dives, the concepts page, the prompt guides index, and the five prompt pages. Two prompts were added, a Feature Release Record Prompt and a Release Opening Prompt
+- **Implementation templates** aligned with template tree VERSION 5, and VERSION 6 for the Nuxt / Docus set: a parameterized prompt pack on each stack page, a ten-section Nuxt / Docus feature template, and a catalog of all eight template sets. The platform's own pages now describe its PostgreSQL database
+- **Architecture visuals** updated for the edition model and the Feature Release tier: the diagrams, the home-page strata summary, and the interactive models show node 5 as one constitution issued in editions, the `BR` → `PRD` → Feature Release tiers, and the Feature Release as the execution loop's unit
+- **Version & Build page** now separates the application version from the protocol release; the application itself moves to application version 1.2.0, matching the protocol release it publishes
+- **Access control:** the Account & Settings page now requires the same Professional tier in both the browser guard and the server guard
+- **Public repository regenerated** from an allowlist: the protocol's overview and changelog in `docs/protocol/`, GitHub-readable versions of the five stratum pages, public pages mirrored, member pages represented by placeholders, and an egress gate that refuses to stage gated content
+- **Citation:** release 1.2.0 archived as a new Zenodo version under the existing concept DOI; the citation page cites 1.2.0 and lists the version DOI of every release
+
+**About STRATA Protocol v1.1:** v1.1 was stamped on 2026-08-06 and applied in practice. It was released retroactively as 1.1.0; its overview is a reconstruction.
 
 ---
 

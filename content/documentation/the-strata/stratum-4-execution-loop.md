@@ -1,6 +1,6 @@
 ---
 title: "Stratum 4 — Execution Loop"
-description: Phased, per-requirement development with human-gated phase advancement.
+description: Phased development, one Feature Release at a time, with human-gated phase advancement.
 navigation:
   order: 4
 authors:
@@ -12,7 +12,7 @@ date: "2026-05-24"
 
 > *The human is the gate, not the reviewer. No phase advances without explicit sign-off. The loop is the mechanism that makes AI-assisted development trustworthy.*
 
-Stratum 4 — Execution Loop is where STRATA becomes operational. Strata 1 through 3 are preparation — classify, derive, govern. Stratum 4 is execution: the structured, repeating cycle through which a governed AI copilot and a human engineer build software together, one phase at a time, one requirement at a time, against the defined mandate established by the authority chain.
+Stratum 4 — Execution Loop is where STRATA becomes operational. Strata 1 through 3 are preparation — classify, derive, govern. Stratum 4 is execution: the structured, repeating cycle through which a governed AI copilot and a human engineer build software together, one phase at a time, one Feature Release at a time, against the defined mandate established by the authority chain.
 
 The Execution Loop is not a development methodology bolted onto an AI tool. It is a purpose-built protocol for human-AI collaborative development, designed around one governing reality: AI-generated code cannot be trusted without a human gate, and a human gate without structure is not a gate — it is a formality.
 
@@ -33,9 +33,21 @@ The Execution Loop provides a specific protocol mechanism to prevent each of the
 
 ## Key Concepts
 
+### The Feature Release Is the Unit
+
+The loop runs per [Feature Release](/documentation/reference#feature-release), per phase. Stratum 2 defines three tiers below the business requirement, and only one of them enters this stratum:
+
+| Tier | Role in the loop |
+|---|---|
+| `PRD-NNN` | A single verifiable statement. Cited, never gated on its own |
+| **`FR-NNN-[narration]`** | **The unit the loop runs against.** One session opens per Feature Release |
+| Milestone | A group of Feature Releases that reaches a demonstrable increment. A milestone gate follows its last release |
+
+The analysis and the phased implementation plan are written here, when the Feature Release's session opens, against the current state of the codebase and the accumulated context of every prior session. A plan derived months earlier, during derivation, is a plan written without the deviations this loop exists to feed forward. Each phase of the plan then runs through the loop exactly once, and does not exit it until the human engineer signs off.
+
 ### Phase Structure
 
-A phase is the smallest independently deliverable unit of a requirement. It has four properties:
+A phase is the smallest independently deliverable unit of a Feature Release. It has four properties:
 
 1. It can be built by the copilot in a bounded sprint session
 2. It can be manually tested by the human engineer against specific gate criteria
@@ -64,16 +76,29 @@ Gate criteria defined before the sprint are the only criteria that count. Criter
 
 **Session protocol** governs how a phase is executed:
 
-1. **Context loading**: The human provides the session context — requirement identity, phase number, plan reference, and context carried forward from all prior phases. The copilot confirms understanding before generation begins.
+1. **Context loading**: The agent has already loaded its edition of the operative constitution, so the human provides only what is session-specific — the Feature Release, phase number, plan reference, and context carried forward from all prior phases. The copilot confirms understanding before generation begins.
 2. **Sprint execution**: All phase files generated in one sprint. Deviations logged in `phase-n-notes.txt` as they occur, not retrospectively.
-3. **Automated quality verification**: `npm run type-check`, `npm run lint`, `npm run test:unit -- --run`, `npm run build` — all four must pass before the manual gate opens. Any failure is resolved by the copilot in the same session.
+3. **Automated quality verification**: four properties must hold before the manual gate opens — a clean static type check, a clean lint, passing automated test suites, and a successful production build. Any failure is resolved by the copilot in the same session.
 4. **`phase-n-notes.txt`**: The living in-flight record of the phase. Written during the initial sprint, appended on every fix iteration. Never overwritten — only appended. The honest account of what happened, including deviations.
+
+The verification commands are project-level, not protocol-level. The protocol fixes the four properties, and each project names its own commands in its operative constitution or session parameters. A project whose meaningful suite runs against a real database reports that suite, not a unit suite it does not run.
 
 **Gate protocol** governs what the human verifies and what artifacts are generated on sign-off. Gate criteria are defined before the sprint — specific and testable, not vague ("the node renders with the correct dashed border when isFractalParent is true" — not "the feature works").
 
 ::tip
 The `phase-n-notes.txt` is the most important artifact produced during a phase. It is the input for the phase manifest generated at gate PASS. It is the context carried forward to the next phase's session. And it is the forensic record of what actually happened — including the deviations that the gate criteria did not cover.
 ::
+
+### Where the Session Lives
+
+The session path mirrors the derivation path. The part of the path after `sessions/` is identical to the part after `04-prd/`, so a Feature Release's record and its execution record are a mechanical path substitution in either direction:
+
+```
+docs/strata/2.derivation/04-prd/{capability}/{milestone}/FR-{NNN}-{narration}.md
+docs/strata/4.execution-loop/sessions/{capability}/{milestone}/FR-{NNN}-{narration}/
+```
+
+The session folder holds the analysis, the implementation plan, and an `implementation/` folder with the phase notes, the phase manifests, and the running commit log. A project whose document 04 is a single file has no capability or milestone folders, so its session paths have none either. When a release moves between milestones, its Feature Release number stays the join key, and the move is documented rather than silent.
 
 ## How Practitioners Apply It
 
@@ -85,15 +110,15 @@ Write specific, testable gate criteria for the phase before the sprint begins. N
 
 ### Open the session with context
 
-Provide the session context: requirement identity, phase number, plan reference, and context carried forward from all prior phases of this requirement. The copilot confirms understanding before generation begins. If the confirmation misrepresents scope or prior context, correct it before generation starts — this is the cheapest gate in the loop.
+Provide the session context: the Feature Release, phase number, plan reference, and context carried forward from all prior phases of this release. The copilot confirms understanding before generation begins. If the confirmation misrepresents scope or prior context, correct it before generation starts — this is the cheapest gate in the loop.
 
 ### Execute a complete sprint
 
 All phase files are generated in one sprint — not file-by-file waiting for individual approval. The sprint produces a complete, coherent change set for the phase. Deviations are logged in `phase-n-notes.txt` as they occur — inline, not retrospectively.
 
-### Run all four automated checks
+### Confirm all four verification properties
 
-After the sprint: `npm run type-check` (zero TypeScript errors), `npm run lint` (zero ESLint errors/warnings), `npm run test:unit -- --run` (all tests passing, no new skips without reason), `npm run build` (production build succeeds). Any failure is resolved by the copilot before the manual gate opens.
+After the sprint, run the commands your project names for the four properties: static type check (zero errors), lint (zero errors, zero warnings), automated test suites (all passing, no new skips without a recorded reason), and production build (succeeds cleanly). Any failure is resolved by the copilot before the manual gate opens.
 
 ### Human tests against gate criteria
 
@@ -101,7 +126,7 @@ Exercise the feature as a user would. Include error paths and edge cases. Check 
 
 ### Generate artifacts on PASS
 
-On gate PASS: generate `PHASE-N-IMPLEMENTATION-MANIFEST.md` (the formal, structured record of what was built), append an entry to `RUNNING-COMMIT-LOG.md` (the cumulative commit narrative for this requirement), and finalize the `CONTEXT TO CARRY FORWARD` section of `phase-n-notes.txt`. These artifacts are not administrative overhead — they are the mechanism by which the truth of what was built propagates into the next phase.
+On gate PASS: generate `PHASE-N-IMPLEMENTATION-MANIFEST.md` (the formal, structured record of what was built), append an entry to `RUNNING-COMMIT-LOG.md` (the cumulative commit narrative for this Feature Release), and finalize the `CONTEXT TO CARRY FORWARD` section of `phase-n-notes.txt`. These artifacts are not administrative overhead — they are the mechanism by which the truth of what was built propagates into the next phase.
 
 ::
 
@@ -121,6 +146,8 @@ Phase N encounters an architectural finding. The finding is handled. The fix wor
 
 ## StrataProtocol.org Example
 
+This platform was built under STRATA Protocol v1.0, which numbered requirements `REQ-NNN`, and its records keep those identifiers; FR-001 is its first [Feature Release](/documentation/reference#feature-release) under STRATA Protocol v1.2.
+
 This very page. REQ-001, Phase 2 is executing the Execution Loop right now.
 
 The phase has a defined scope (six content files in `content/documentation/the-strata/`), defined gate criteria (all seven required sections present on each stratum page, unauthenticated access returns HTTP 200 for all six pages, all internal links resolve without 404), and a `phase-2-notes.txt` tracking decisions and deviations as they occur.
@@ -128,6 +155,8 @@ The phase has a defined scope (six content files in `content/documentation/the-s
 The session manifest generated at gate PASS will be `PHASE-2-IMPLEMENTATION-MANIFEST.md`. The running commit log entry will be appended to `RUNNING-COMMIT-LOG.md`. The full history of this platform's construction — every phase of every requirement, with phase notes and manifests — lives in `docs/strata/4.execution-loop/sessions/`.
 
 The Execution Loop's self-referential proof: the claim that this platform was built using STRATA is verifiable, not just asserted, because the loop produces a durable record of every phase.
+
+This project names its own commands for the verification properties: `npm run type-check` for the static type check, `npm run test:unit -- --run` for the automated test suites, and `npm run build` for the production build.
 
 ::u-page-c-t-a
 ---

@@ -1,41 +1,45 @@
-# Frontend Development — Prompt Sequence (Overview)
+# Frontend Development — Prompt Pack (Overview)
 
-> **Public / redacted illustration.** This describes *what* the STRATA prompt sequence for a frontend
-> feature does, and *why* it is shaped this way. It is intentionally **not** the prompts themselves —
-> the working prompt library (exact wording, orchestration, and per-phase scripting) is part of the
-> member toolkit.
+> **Public / redacted illustration.** This describes the *shape* of the STRATA prompt pack for a frontend
+> Feature Release: its sections, and what each one takes in and hands on. It is intentionally **not** the
+> prompts themselves — the working pack (exact wording, the parameters file, and the stack's checks) is
+> part of the member toolkit.
 
-A feature is never delivered with a single clever prompt. It is delivered by driving an AI copilot
-through a fixed, repeatable **sequence** — each stage with a defined input, a defined output, and a
-human checkpoint — so the work stays governed from rough idea to merged code. The value is in the
+A Feature Release is never delivered with a single clever prompt. It is delivered by driving an AI
+copilot through a fixed, repeatable **sequence** — each prompt with a defined input, a defined output, and
+a human checkpoint — so the work stays governed from rough idea to merged code. The value is in the
 sequence, not in any one instruction.
 
-## Stage 1 — Planning
+## Driven by a parameters file
 
-The opening prompt turns an informal, rough specification into a rigorous requirements document. The
-agent is directed to reconcile the request against the existing system rather than accept it at face
-value, and to make a deliberate second pass to close gaps before anything is designed. The output is a
-single authoritative requirement the rest of the work derives from.
+The pack is two files. The prompt pack holds the prompts, and its body is the same for the backend, frontend, and Nuxt
+stacks. A companion parameters file holds every value that belongs to one project and one stack, and every prompt
+opens by pointing to it. To start a release, both files are copied into the release's session folder and
+the parameters are filled in. Prompts are then pasted in order as the work advances, and each one
+stands alone, so any session can pick up the work.
 
-## Stage 2 — Documentation
+## The sections
 
-From the approved requirement, the agent produces two artifacts: an **analysis** (structure, risks,
-impact, open questions) and a **phased implementation plan** with its own acceptance criteria per phase.
-Reference templates exist, but the agent is told to reason against the *current* codebase rather than
-copy them — boilerplate is treated as a suggestion, never an answer.
+**Genesis · requirements document.** Rough specifications in, the release's requirements document out.
+The agent consults the project's operative constitution first, and states each requirement so it can be
+tested downstream.
 
-## Stage 3 — Implementation
+**Preparatory documentation · analysis and implementation plan.** The requirements document in; the
+**analysis**, the **phased implementation plan**, and the session index out. They are written when the
+release's session opens, against the codebase as it stands and everything earlier releases learned, and
+every phase carries its own acceptance criteria.
 
-Implementation runs as a human-gated loop, one phase at a time:
+**Implementation.** Three prompts repeat for every phase:
 
-- **Iterate.** The agent implements a phase while keeping rough, ephemeral working notes. Each
-  subsequent iteration folds in the human's review feedback and continues until manual testing passes.
-- **Verify.** Any change to code logic must clear a verification gate — type-checking, build, and the
-  test suite — before the agent is allowed to yield.
-- **Document, only after sign-off.** No durable documentation is written until the human confirms the
-  phase actually works. Then the agent distills its working notes into a permanent record: a per-phase
-  manifest of everything done, an entry in a running commit log, and a structured, ready-to-use commit
-  message.
+- **Phase N · Kickoff** starts the phase from the plan and the records of the phases before it, and
+  keeps rough, ephemeral working notes.
+- **Phase N · Iteration K** folds in the findings of the human's manual testing. It repeats until
+  testing passes.
+- **Phase N · Close-out** runs only after the human gate passes. It distills the notes into a per-phase
+  manifest and a running commit-log entry, and reconciles the plan for the phases still to come.
+
+Every implementation prompt ends with the same protocol: keep the working notes, and clear the
+verification gate before handing back.
 
 ## Why it is shaped this way
 
@@ -45,11 +49,11 @@ The craftsmanship lives in a few deliberate design choices:
   confirmation.
 - **Ephemeral notes, distilled records.** Rough notes capture the messy reality of a phase as it
   happens; the permanent manifest is written once, afterward — so the record is accurate, not aspirational.
-- **Carry-forward context.** Each phase inherits the records of the phases before it, so a long feature
+- **Carry-forward context.** Each phase inherits the records of the phases before it, so a long release
   stays coherent and the resulting artifact trail is complete and correctly ordered.
 - **Traceability by default.** Scope is declared up front and every deviation is logged, so each change
   is auditable back to the requirement that motivated it.
 
 > Tuned for frontend work — components, state, rendering, and user-facing behavior. The backend and Nuxt
-> sequences follow the same shape with stack-appropriate verification and governance. The exact prompts
-> are member-only.
+> packs share the same prompts; their parameters files carry stack-appropriate verification and checks.
+> The exact prompts are member-only.

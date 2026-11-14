@@ -24,7 +24,7 @@ STRATA is a five-stratum protocol for governing AI-assisted software development
 
 The five strata are: **Classification** (deciding what kind of project this is before the first decision is made), **Derivation** (building the complete knowledge base in dependency order before writing any specification), **Authority Chain** (constitutionally mandating how your AI copilot operates on this project), **Execution Loop** (the human-gated cycle through which governed AI and engineer build software together, one phase at a time), and **Artifact Trail** (the living record that makes every decision durable beyond any single session).
 
-STRATA is not an AI tool. It is not a prompt library. It is not a methodology like Agile or Scrum — it does not organize your sprints or your standups. It is an architectural governance protocol: a framework for ensuring that AI-generated work operates within defined constraints, at every phase, on every requirement.
+STRATA is not an AI tool. It is not a prompt library. It is not a methodology like Agile or Scrum — it does not organize your sprints or your standups. It is an architectural governance protocol: a framework for ensuring that AI-generated work operates within defined constraints, at every phase of every release.
 
 ::tip
 The five strata are not a checklist. They are a sequential dependency chain — each stratum consumes the output of the one before it. Stratum 5 is only possible because Stratum 4 produced traceable artifacts, which is only possible because Stratum 3 established a governed mandate, which is only possible because Stratum 2 derived a complete knowledge base, which is only possible because Stratum 1 classified correctly.
@@ -53,7 +53,7 @@ The Authority Chain is a five-node constitutional framework derived from your St
 
 ### Stratum 4 — Execution Loop :icon{name="i-ph-arrows-clockwise"}
 
-The Execution Loop is the structured, human-gated cycle through which a governed AI copilot and engineer build software together — one phase at a time, one requirement at a time. The human is the gate, not the reviewer: no phase advances without explicit sign-off, and each session opens against the authority chain and the current phase plan.
+The Execution Loop is the structured, human-gated cycle through which a governed AI copilot and engineer build software together — one phase at a time, one [Feature Release](/documentation/reference#feature-release) at a time. The human is the gate, not the reviewer: no phase advances without explicit sign-off, and each session opens against the authority chain and the current phase plan.
 
 [Read the full narrative →](/documentation/the-strata/stratum-4-execution-loop)
 
@@ -73,11 +73,11 @@ You do not need a complete implementation to begin. These three steps give you a
 
 Before opening your first AI session, answer one question: what kind of project is this? A Greenfield MVP and a migration of an established production system require fundamentally different engineering strategies. Classifying correctly ensures that the documents you derive, the mandate you establish, and the code you generate are all calibrated to the actual situation — not a reasonable-but-wrong assumption about it.
 
-Read [Stratum 1 — Classification](/documentation/the-strata/stratum-1-classification) to understand the classification dimensions and how to produce your first Classification Record.
+Read [Stratum 1 — Classification](/documentation/the-strata/stratum-1-classification) to understand the classification dimensions and how to produce your first Classification Record. The record also names each AI agent that will work on the project.
 
 ### Step 2 — Set up your authority chain
 
-Your authority chain is the document that governs your AI copilot on this project — derived from your classification and your project's normative documents, not written from instinct. It establishes scope, architecture constraints, escalation rules, and prohibited patterns before the first line of code is generated.
+Your authority chain is the set of documents that governs your AI copilot on this project — derived from your classification and your project's normative documents, not written from instinct. It ends in the operative constitution, written as one edition per AI agent you use, each in the file that agent loads. It establishes scope, architecture constraints, escalation rules, and prohibited patterns before the first line of code is generated.
 
 Read [Stratum 3 — Authority Chain](/documentation/the-strata/stratum-3-authority-chain) for the five-node structure and derivation sequence. The [AI Playbook](/ai-playbook) provides public guidance on deriving authority chains for the most common AI development tools.
 
@@ -94,6 +94,8 @@ docs/
     4.execution-loop/
     5.artifact-trail/
 ```
+
+If you keep `docs/` outside your code repository, record where it is versioned, and stamp each deployed edition of your operative constitution with the version it was cut from.
 
 You do not need pre-filled templates to begin — create the folders, produce your Classification Record in `1.classification/`, and start from there. Member templates accelerate this step by providing pre-structured documents for each stratum, but the structure itself is public and sufficient for a first project.
 ::

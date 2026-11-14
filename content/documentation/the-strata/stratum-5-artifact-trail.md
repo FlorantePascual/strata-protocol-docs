@@ -29,7 +29,7 @@ The trail serves three distinct purposes:
 
 **Forensic** — The trail answers: *Why does the system work the way it does?* Every architectural decision has an ADR that records the context, options considered, and rationale for the choice made. Every deviation has a log entry that records what changed, why it diverged from the plan, and the downstream implication. This forensic record prevents the most expensive class of maintenance error: a future actor "correcting" something deliberately designed.
 
-**Operational** — The trail serves as the authoritative context source for all future development on the same system, whether that future is one week or two years away. A new STRATA engagement extending an existing system does not begin with a blank slate — it begins with a complete Classification Record, a full derivation document set, a deviation log, and a commit trail narrated at the requirement and phase level.
+**Operational** — The trail serves as the authoritative context source for all future development on the same system, whether that future is one week or two years away. A new STRATA engagement extending an existing system does not begin with a blank slate — it begins with a complete Classification Record, a full derivation document set, a deviation log, and a commit trail narrated at the release and phase level.
 
 **Methodological** — The trail is evidence that STRATA was followed. For a practitioner positioning STRATA to clients, employers, or a technical audience, a complete Artifact Trail for a shipped project demonstrates not just *what* was built, but *how every decision was made* and *how the AI was governed during construction*. That is proof of methodology, not a claim of it.
 
@@ -43,10 +43,12 @@ Every artifact in the STRATA trail belongs to one of six categories:
 |---|---|---|
 | 1 — Classification | Stratum 1 | Classification Record; reclassification records if applicable |
 | 2 — Derivation | Stratum 2 | The 14 normative documents — Vision, BRD, PRD, Architecture, Standards, etc. |
-| 3 — Authority | Stratum 3 | Manifesto, UI & Testing Standards, operative constitution, authority chain version log |
-| 4 — Execution | Stratum 4 | Phase notes, phase manifests, running commit log, deviation log, commit narratives |
+| 3 — Authority | Stratum 3 | Operative constitution masters (one per edition), constitution set, chain map, authority chain version log |
+| 4 — Execution | Stratum 4 | Phase notes, phase manifests, running commit log, deviation log, execution state, commit narratives |
 | 5 — Decision | All strata | Architecture Decision Records (ADRs), Process Decision Records (PDRs) |
 | 6 — Continuity | Project close | Project close record, system summary, future engagement brief, known debt register, trail index |
+
+Two categories carry rules from the strata that produce them. Category 3 holds the operative constitution as the masters of its editions, one per AI agent, with the constitution set that lists each master beside its deployed path. Every material change brings the editions back to parity and re-cuts each deployed copy, stamped with the version it was cut from, so a reader of the trail can tell exactly which mandate governed any phase. Category 4 lives in each Feature Release's session folder, whose path mirrors the release's derivation path: `sessions/{capability}/{milestone}/FR-{NNN}-{narration}/` for `04-prd/{capability}/{milestone}/FR-{NNN}-{narration}.md`. A session folder that does not mirror its release record is a defect.
 
 ::note
 Continuity artifacts (Category 6) are the bridge from the completed project to every future engagement. They are the documents a new engineer or new AI session reads *first* when beginning work on an existing STRATA-governed system — before touching the codebase, before reading the architecture document, before opening a session.
@@ -74,6 +76,16 @@ At project close, Stratum 5 produces the continuity artifacts — a structured s
 - **Future engagement brief**: What the next STRATA engagement needs to know before writing the first spec — what worked well, what to approach carefully, deviations with ongoing implications, recommended next classification
 - **Known debt register**: Deliberate technical debt accepted during delivery — what it is, why it was accepted, and what the remediation path is
 - **Trail index**: Navigation guide to the full Artifact Trail — a map of where everything is and what it covers
+
+### Coverage, Not Counts
+
+The trail index counts the artifacts in each category, and counts alone cannot detect the gap that matters most. A project with ten Feature Releases and nine session folders reports a plausible number on every row. So the count gains a coverage table, with one row per Feature Release in the build order:
+
+| Release | Session folder | Phases gated | Manifests | Commit log |
+|---|---|---|---|---|
+| `FR-NNN` | present or absent | N of M | N | present or absent |
+
+A release with gated phases and no manifest is exactly the gap this table surfaces.
 
 ## How Practitioners Apply It
 
@@ -109,9 +121,11 @@ The codebase describes what was built. Without the trail, no one knows why. The 
 
 The authority chain loses its derivation history. Future sessions are governed by a constitution that has accumulated constraints over time, but has no version log explaining why each constraint was added. The copilot operates inside a mandate it cannot understand — and neither can the human engineer who inherited the project.
 
-The most common failure mode: trail artifacts are deferred because delivery velocity feels more urgent. Phase notes are not committed until the end of the requirement. ADRs are never written because architecture decisions "seemed obvious." The commit log has commit messages like "fix stuff" and "more work." By the time the project closes, reconstruction is the only option — and reconstruction is not a trail. It is a best-effort approximation of one.
+The most common failure mode: trail artifacts are deferred because delivery velocity feels more urgent. Phase notes are not committed until the end of the release. ADRs are never written because architecture decisions "seemed obvious." The commit log has commit messages like "fix stuff" and "more work." By the time the project closes, reconstruction is the only option — and reconstruction is not a trail. It is a best-effort approximation of one.
 
 ## StrataProtocol.org Example
+
+This platform was built under STRATA Protocol v1.0, which numbered requirements `REQ-NNN`, and its records keep those identifiers; FR-001 is its first [Feature Release](/documentation/reference#feature-release) under STRATA Protocol v1.2.
 
 The `docs/strata/` directory hierarchy is the complete Artifact Trail for this platform.
 
@@ -119,9 +133,9 @@ The `docs/strata/` directory hierarchy is the complete Artifact Trail for this p
 
 **Category 2**: `docs/strata/2.derivation/` — the 14 normative documents, including Vision & Business Case, BRD, PRD (with individual requirement files under `docs/strata/2.derivation/04-prd/`), Engineering Standards, and Testing Standards.
 
-**Category 3**: `docs/strata/3.authority-chain/` and `.github/copilot-instructions.md` — the Manifesto, UI & Testing Standards, the operative constitution, and the version log.
+**Category 3**: `docs/strata/3.authority-chain/` and the two deployed editions, `CLAUDE.md` and `.github/copilot-instructions.md` — the Manifesto, UI & Testing Standards, the operative constitution, and the version log.
 
-**Category 4**: `docs/strata/4.execution-loop/sessions/` — session records, phase manifests, and running commit logs for every requirement that has been implemented. Phase notes for every phase, appended as iterations occurred. Commit narratives narrated at the requirement and phase level.
+**Category 4**: `docs/strata/4.execution-loop/sessions/` — session records, phase manifests, and running commit logs for every requirement that has been implemented. Phase notes for every phase, appended as iterations occurred. Commit narratives narrated at the requirement and phase level. FR-001's session folder, `docs/strata/4.execution-loop/sessions/FR-001-protocol-v1.2-publication/`, mirrors its release record, `docs/strata/2.derivation/04-prd/FR-001-protocol-v1.2-publication.md`: this platform keeps document 04 as a single file, so neither path has capability or milestone segments.
 
 The trail is what makes the self-referential proof verifiable — any practitioner can audit whether STRATA was actually followed on this platform by reading the trail, not by trusting the claim. The trail is the difference between asserting the methodology and demonstrating it.
 

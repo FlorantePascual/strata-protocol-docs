@@ -16,7 +16,7 @@ The five governing principles below are not aspirational guidelines. They are th
 
 **Statement**
 
-Every document in a STRATA-governed project traces to a higher-layer intent. Nothing is created from first principles at the wrong layer of the authority chain. The Classification Record constrains the vision; the vision constrains the business requirements; the business requirements constrain the product specification; the product specification constrains the implementation plan. The arrow of causation runs downward: each layer derives from the layer above it. Documents that cannot state their derivation source are ungoverned decisions masquerading as governed work.
+Every document in a STRATA-governed project traces to a higher-layer intent. Nothing is created from first principles at the wrong layer of the authority chain. The Classification Record constrains the vision; the vision constrains the business requirements; the business requirements constrain the product requirements; the product requirements are bundled into Feature Releases, and each Feature Release's implementation plan is derived from them when its session opens. The arrow of causation runs downward: each layer derives from the layer above it. Documents that cannot state their derivation source are ungoverned decisions masquerading as governed work.
 
 **Implication for practitioners**
 

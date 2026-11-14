@@ -20,35 +20,34 @@ Cite the framework by its name, author, and canonical home. The authoritative pu
 - **Author:** Florante Pascual
 - **Canonical URL:** [https://strataprotocol.org](https://strataprotocol.org)
 - **Repository:** [github.com/FlorantePascual/strata-protocol-docs](https://github.com/FlorantePascual/strata-protocol-docs)
-- **DOI (cite this):** [10.5281/zenodo.20939882](https://doi.org/10.5281/zenodo.20939882) — concept DOI, always resolves to the latest version
+- **Current release:** :protocol-version{name="release"}, which publishes STRATA Protocol :protocol-version{name="version"}
+- **DOI (cite this):** [10.5281/zenodo.20939882](https://doi.org/10.5281/zenodo.20939882) — concept DOI, always resolves to the latest release
 - **License:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
 
 ::note
-The framework has a permanent Zenodo DOI: [10.5281/zenodo.20939882](https://doi.org/10.5281/zenodo.20939882). This **concept DOI** always resolves to the latest version. To cite version 1.0.0 specifically, use [10.5281/zenodo.20939883](https://doi.org/10.5281/zenodo.20939883).
+The framework has a permanent Zenodo DOI: [10.5281/zenodo.20939882](https://doi.org/10.5281/zenodo.20939882). This **concept DOI** always resolves to the latest release, so a citation that uses it stays valid as new releases are archived. To cite one release specifically, use its version DOI, listed under [Version DOIs](#version-dois).
 ::
 
 ## Citation formats
 
-Use whichever format your publication or reference manager requires. Each entry cites version 1.0.0 — the framework's initial public release.
+Use whichever format your publication or reference manager requires. Each entry cites the current release, :protocol-version{name="release"}, through the concept DOI.
 
 **APA:**
 
-```text
-Pascual, F. (2026). STRATA Protocol: A governed framework for structured,
-traceable, and repeatable AI-assisted software delivery (Version 1.0.0)
-[Computer software]. Zenodo. https://doi.org/10.5281/zenodo.20939882
-```
+::protocol-citation{format="apa"}
+::
 
 **BibTeX:**
 
-```bibtex
-@software{pascual_strata_protocol_2026,
-  author    = {Pascual, Florante},
-  title     = {STRATA Protocol: A governed framework for structured, traceable, and repeatable AI-assisted software delivery},
-  year      = {2026},
-  version   = {1.0.0},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.20939882},
-  url       = {https://doi.org/10.5281/zenodo.20939882}
-}
-```
+::protocol-citation{format="bibtex"}
+::
+
+## Version DOIs
+
+Each release also has a version DOI, which resolves to that release and no other. Cite it when your work depends on the exact text of one protocol version.
+
+- **Release :protocol-version{name="release"}** (STRATA Protocol :protocol-version{name="version"}, current): :protocol-version{name="releaseDoi"}
+- **Release 1.1.0** (STRATA Protocol v1.1, reconstructed text): [10.5281/zenodo.23066929](https://doi.org/10.5281/zenodo.23066929)
+- **Release 1.0.0** (STRATA Protocol v1.0): [10.5281/zenodo.20939883](https://doi.org/10.5281/zenodo.20939883)
+
+A version DOI that reads *pending* is issued when its release is archived on Zenodo. For what changed from one protocol version to the next, see the [Protocol Version History](/changelog/protocol-versions).

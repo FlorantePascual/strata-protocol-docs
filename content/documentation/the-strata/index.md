@@ -18,9 +18,9 @@ The strata are not a checklist. They are a thinking sequence, an architectural s
 
 | Stratum | Name | Framing Question | Purpose |
 |---|---|---|---|
-| 1 | Classification | What kind of project is this? | Determines class, category, and continuity constraints — the input to all downstream decisions |
+| 1 | Classification | What kind of project is this? | Determines class, category, continuity constraints, and derivation depth — the input to all downstream decisions |
 | 2 | Derivation | What do we need to know before we build it? | Produces the 14 normative documents in dependency order — the knowledge base from which everything else operates |
-| 3 | Authority Chain | Who governs the AI — and how? | Establishes the five-node constitutional framework that mandates how the AI copilot operates on this project |
+| 3 | Authority Chain | Who governs the AI — and how? | Establishes the five-node constitutional framework whose last node, the operative constitution, mandates how every AI agent operates on this project |
 | 4 | Execution Loop | How does work advance, one verified phase at a time? | The repeating, human-gated cycle through which governed AI and human engineer build software together |
 | 5 | Artifact Trail | How do we make every decision durable beyond the session? | The continuously assembled record of every decision, deviation, gate pass, and context carried forward |
 

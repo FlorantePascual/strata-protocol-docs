@@ -71,9 +71,21 @@ Each class contains three categories. The category is determined by the specific
 | Class 2 | 2.2 Evolutionary rebuild | Preserve business while redefining the system |
 | Class 2 | 2.3 Modernization | Improve the system incrementally while operating continuously |
 
+A project belongs to a category by its primary objective. The characteristics that describe each category are indicative, not definitional: a project can match only some of them and still belong. Record a partial match on the Classification Record instead of smoothing it over, because the characteristics that do not hold usually predict which of the category's typical mistakes apply and which do not.
+
 ### Continuity Constraints
 
-The more continuity constraints that exist — paying customers, operational workflows, third-party integrations, public APIs, compliance obligations, SLAs, revenue reliance — the more the engineering strategy must account for preservation, not just construction. Continuity constraints are the primary driver of Class 2 depth requirements and the reason Layer 6 (Migration Strategy) is treated as critical for Established Systems.
+The more continuity constraints that exist — paying customers, operational workflows, third-party integrations, public APIs, compliance obligations, SLAs, revenue reliance — the more the engineering strategy must account for preservation, not just construction. Continuity constraints are the primary driver of Class 2 depth requirements and the reason the inbound half of Layer 6 (Transition: moving off the system being replaced) is treated as critical for Established Systems.
+
+### Depth Is Set on the Record
+
+Stratum 2 gives each derivation layer a default depth, and the default is keyed on the class. The class is the wrong resolution for some categories. A Category 1.3 platform built greenfield has no continuity obligations, yet it still needs full architectural depth, because its constraint is irreversibility rather than continuity: some decisions stop being revisable the moment a consumer holds real data.
+
+So the classifier applies the class default and then overrides it per layer, with a stated reason, on the Classification Record. An override that is not written on the record does not exist. A reviewer who reads only the class label will apply the default and produce documents that are thin exactly where thinness is permanent.
+
+### The Constitution Set Is Declared Here
+
+The record also names every AI agent that will work on the project, and the path each agent loads its instructions from. Stratum 3 issues the operative constitution as one edition per agent, and whether the editions agree can only be checked against a declared list. Declaring is not synchronizing: the record names the editions, and Stratum 3 brings them to parity. A project with one agent still declares it, because "one" is the thing that changes.
 
 ## How Practitioners Apply It
 
@@ -92,11 +104,11 @@ Match the situation to the six categories. New capability discovery → Greenfie
 
 ### Produce the Classification Record
 
-Document the classification: class, category, primary business objective (in business terms, not implementation terms), continuity constraints, rationale for the classification, and the risks of misclassification. Sign it. Commit it to the repository. This becomes the first document in the authority chain and the first input to Stratum 2.
+Document the classification: class, category (and any partial match), primary business objective (in business terms, not implementation terms), continuity constraints, rationale for the classification, the derivation depth directive for each Stratum 2 layer, the operative constitution set, and the risks of misclassification. Sign it and version it. If your derivation documents live outside the code repository, state where the record is versioned. This becomes the first document in the authority chain and the first input to Stratum 2.
 
 ### Hold the classification stable
 
-Classification is not revised because a project is harder than expected, or because a new technical preference emerges. It is revised only if a material business-level change occurs — for example, a Class 1 project that acquires paying customers mid-build crosses into Class 2 territory. That is a formal reclassification event: document it, assess downstream implications, and revise the derivation documents accordingly.
+Classification is not revised because a project is harder than expected, or because a new technical preference emerges. It is revised only if a material business-level change occurs — for example, a Class 1 project that acquires paying customers mid-build crosses into Class 2 territory. That is a formal reclassification: write a superseding record rather than editing the old one. It states what the prior record said, what changed, what did not change, and which downstream documents inherited from the prior record and now need review.
 
 ::
 
@@ -111,6 +123,8 @@ The inverse failure — treating a Class 1 project as Class 2 — overbuilds the
 Neither failure is the result of incompetence. Both are the result of absent classification.
 
 ## StrataProtocol.org Example
+
+This platform was built under STRATA Protocol v1.0, which numbered requirements `REQ-NNN`, and its records keep those identifiers; FR-001 is its first [Feature Release](/documentation/reference#feature-release) under STRATA Protocol v1.2.
 
 This platform is classified as **Class 1, Category 1.3 — Platformization**.
 
@@ -143,4 +157,4 @@ links:
 
 Stratum 1 is the first stratum — nothing precedes it in the STRATA Protocol.
 
-**→ Next:** [Stratum 2 — Derivation](/documentation/the-strata/stratum-2-derivation) — consumes the Classification Record as its first and highest-authority input. Document depth, risk weighting, and which of the 14 normative documents are required versus stubbed are all determined by the Classification.
+**→ Next:** [Stratum 2 — Derivation](/documentation/the-strata/stratum-2-derivation) — consumes the Classification Record as its first and highest-authority input. Document depth, risk weighting, and which of the 14 normative documents are required versus stubbed all follow from the record's depth directive: the class default, overridden per layer with a stated reason.

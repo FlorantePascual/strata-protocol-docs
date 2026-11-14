@@ -12,6 +12,10 @@ date: "2026-06-05"
 
 STRATA Protocol's value is in the methodology — five structured strata that make AI-assisted software delivery governed, traceable, and repeatable. The documentation makes the framework accessible to any practitioner. For those who want to move faster, reduce trial-and-error, or work alongside experienced implementers, we offer direct engagement through a free discovery consultation.
 
+::u-button{to="/apply" icon="i-ph-handshake" size="lg" color="primary"}
+Book a free Discovery Call
+::
+
 ## What We Do
 
 We work directly with founders, technical leads, and engineering teams to implement the STRATA Protocol on their projects. This is not a consulting retainer or a service catalog — it is a practitioner relationship built around a single objective: governed AI-assisted delivery that actually ships.

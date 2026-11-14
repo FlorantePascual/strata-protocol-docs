@@ -1,47 +1,55 @@
-# Nuxt Development — Prompt Sequence (Overview)
+# Nuxt Development — Prompt Pack (Overview)
 
-> **Public / redacted illustration.** This describes *what* the STRATA prompt sequence for a Nuxt
-> feature does, and *why* it is shaped this way. It is intentionally **not** the prompts themselves —
-> the working prompt library (exact wording, orchestration, and per-phase scripting) is part of the
-> member toolkit.
+> **Public / redacted illustration.** This describes the *shape* of the STRATA prompt pack for a Nuxt
+> Feature Release: its sections, and what each one takes in and hands on. It is intentionally **not** the
+> prompts themselves — the working pack (exact wording, the parameters file, and the stack's checks) is
+> part of the member toolkit.
 
-A feature is never delivered with a single clever prompt. It is delivered by driving an AI copilot
-through a fixed, repeatable **sequence** — each stage with a defined input, a defined output, and a
-human checkpoint — so the work stays governed from rough idea to merged code. The Nuxt sequence follows
-the same shape as the backend and frontend ones, with three deliberate differences noted below: it is
-**constitution-aware**, **security-gated**, and **cost-aware**.
+A Feature Release is never delivered with a single clever prompt. It is delivered by driving an AI
+copilot through a fixed, repeatable **sequence** — each prompt with a defined input, a defined output, and
+a human checkpoint — so the work stays governed from rough idea to merged code. The value is in the
+sequence, not in any one instruction.
 
-## Stage 1 — Planning
+## Driven by a parameters file
 
-The opening prompt turns an informal, rough specification into a rigorous requirements document. Before
-it writes anything, the agent consults the project's operative constitution — the Stratum 3 authority
-chain — so the requirement is shaped *within* the project's hard constraints from the outset rather than
-corrected against them later. A deliberate second pass closes gaps before anything is designed.
+The pack is two files. The prompt pack holds the prompts, and its body is the same for the backend, frontend, and Nuxt
+stacks. A companion parameters file holds every value that belongs to one project and one stack, and every prompt
+opens by pointing to it. To start a release, both files are copied into the release's session folder and
+the parameters are filled in. Prompts are then pasted in order as the work advances, and each one
+stands alone, so any session can pick up the work.
 
-## Stage 2 — Documentation
+## The sections
 
-From the approved requirement, the agent produces two artifacts: an **analysis** (structure, risks,
-impact, open questions) and a **phased implementation plan** with its own acceptance criteria per phase.
-The agent reasons against the *current* codebase rather than copying reference templates. Where a
-feature touches access-controlled content, the planning artifacts must carry the project's security
-checklist so the constraint is designed in, not bolted on.
+**Genesis · requirements document.** Rough specifications in, the release's requirements document out.
+The agent consults the project's operative constitution first, and states each requirement so it can be
+tested downstream.
 
-## Stage 3 — Implementation
+**Preparatory documentation · analysis and implementation plan.** The requirements document in; the
+**analysis**, the **phased implementation plan**, and the session index out. They are written when the
+release's session opens, against the codebase as it stands and everything earlier releases learned, and
+every phase carries its own acceptance criteria.
 
-Implementation runs as a human-gated loop, one phase at a time:
+**Implementation.** Three prompts repeat for every phase:
 
-- **Iterate.** The agent implements a phase while keeping rough, ephemeral working notes. Each
-  subsequent iteration folds in the human's review feedback and continues until manual testing passes.
-- **Guard the security boundary.** When a phase introduces protected content, the loop carries an
-  additional checklist: access control must be enforced at every required layer before the phase can
-  close. This invariant outranks convenience.
-- **Verify — cost-aware.** Any change to code logic must clear a verification gate, but the gate is
-  tuned for cost: fast checks (type-checking and the test suite) run every iteration, while the
-  expensive full build is deferred to the human.
-- **Document, only after sign-off.** No durable documentation is written until the human confirms the
-  phase works. The agent then distills its notes into a per-phase manifest, a running commit-log entry,
-  and a structured commit message — and, for protected content, records that the security checklist was
-  satisfied.
+- **Phase N · Kickoff** starts the phase from the plan and the records of the phases before it, and
+  keeps rough, ephemeral working notes.
+- **Phase N · Iteration K** folds in the findings of the human's manual testing. It repeats until
+  testing passes.
+- **Phase N · Close-out** runs only after the human gate passes. It distills the notes into a per-phase
+  manifest and a running commit-log entry, and reconciles the plan for the phases still to come.
+
+Every implementation prompt ends with the same protocol: keep the working notes, and clear the
+verification gate before handing back.
+
+## What the Nuxt parameters add
+
+The prompts are the same as the backend and frontend packs. The Nuxt parameters file makes two
+differences, and both come from where rendering, server, and access control meet:
+
+- **Security-gated.** When a phase introduces protected content, the phase cannot close until access
+  control is enforced at every required layer and its tests pass. This invariant outranks convenience.
+- **Cost-aware.** Fast checks (type-checking and the test suite) run on every iteration, while the
+  expensive full production build is left to the human engineer at the gate.
 
 ## Why it is shaped this way
 
@@ -49,13 +57,13 @@ The craftsmanship lives in a few deliberate design choices:
 
 - **Human as the gate.** No phase advances, and no record is finalized, without explicit human
   confirmation.
-- **Security is an invariant, not a feature.** The access-control checklist travels with the work and
-  must be satisfied before a phase is considered done.
 - **Ephemeral notes, distilled records.** Rough notes capture the messy reality of a phase as it
   happens; the permanent manifest is written once, afterward — so the record is accurate, not aspirational.
-- **Carry-forward context.** Each phase inherits the records of the phases before it, so a long feature
+- **Carry-forward context.** Each phase inherits the records of the phases before it, so a long release
   stays coherent and the resulting artifact trail is complete and correctly ordered.
+- **Traceability by default.** Scope is declared up front and every deviation is logged, so each change
+  is auditable back to the requirement that motivated it.
 
 > Tuned for full-stack Nuxt work, where rendering, server, and access control meet. The backend and
-> frontend sequences follow the same shape without the SSR-specific security and build governance. The
-> exact prompts are member-only.
+> frontend packs share the same prompts without the SSR-specific security and build governance. The exact
+> prompts are member-only.

@@ -46,5 +46,9 @@ links:
     to: /documentation
     icon: i-ph-book-open
     color: neutral
+  - label: Cite the framework
+    to: /documentation/citation
+    icon: i-ph-quotes
+    color: neutral
 ---
 ::

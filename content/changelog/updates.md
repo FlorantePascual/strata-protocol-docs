@@ -3,7 +3,7 @@ title: Platform Updates
 description: Platform updates, engineering notes, and practitioner stories from the StrataProtocol.org team — release notes, methodology refinements, and implementation observations published incrementally.
 status: early-access
 navigation:
-  order: 1
+  order: 2
 authors:
   - name: "Florante Pascual"
     url: "https://florantepascual.com"

@@ -30,25 +30,19 @@ The five strata are:
 
 - **Stratum 2 — Derivation:** Before you can build a system, you must know what it should do. The derivation stratum produces a complete set of normative documents — vision, requirements, architecture, standards, risk analysis — derived in dependency order.
 
-- **Stratum 3 — Authority Chain:** A constitutional framework that governs the AI copilot for the entire development session. The authority chain is a hierarchy of constraints: manifesto, vision, requirements, standards, and operative constitution. Nothing the AI does can contradict anything upstream.
+- **Stratum 3 — Authority Chain:** A constitutional framework that governs every AI copilot session for the whole life of the project. The authority chain is a hierarchy of constraints: project manifesto, vision, requirements, standards, and the operative constitution, issued as one edition per AI agent in use. Nothing the AI does can contradict anything upstream.
 
-- **Stratum 4 — Execution Loop:** The structured cycle through which human and AI collaborate, phase by phase. Each phase is scoped, deliverables are defined, acceptance criteria are stated, and the human engineer is the gate before any phase advances. The loop makes AI-assisted development trustworthy.
+- **Stratum 4 — Execution Loop:** The structured cycle through which human and AI collaborate, one [Feature Release](/documentation/reference#feature-release) at a time and phase by phase. Each phase is scoped, deliverables are defined, acceptance criteria are stated, and the human engineer is the gate before any phase advances. The loop makes AI-assisted development trustworthy.
 
 - **Stratum 5 — Artifact Trail:** The living record that outlives the project. Every decision, deviation, gate pass, and context transition is preserved in a curated, structured artifact trail. Future engineers — or future AI sessions — have high-fidelity context, not scattered notes or undocumented code.
 
-Together, these five strata transform AI from a capability to a controlled, governed partnership.
-
-::tip
-**Key insight:** The five strata are sequential and dependent. Each stratum establishes the foundation for the next. Stratum 1 answers "what are we building?" before Stratum 2 asks "what do we need to know?" This dependency chain is what makes the entire framework trustworthy.
-::
+Together, these five strata transform AI from a capability to a controlled, governed partnership. They are sequential and dependent: each stratum establishes the foundation for the next. Stratum 1 answers "what are we building?" before Stratum 2 asks "what do we need to know?" This dependency chain is what makes the entire framework trustworthy.
 
 ## Who STRATA Is For
 
 **STRATA is for anyone building software with AI.**
 
-::note
 STRATA is language-agnostic, framework-agnostic, and tool-agnostic. Whether you use Python or TypeScript, React or Vue, GPT-4 or Claude, the governance structure applies. The framework is about decision-making discipline, not technology choices.
-::
 
 This includes:
 
@@ -60,17 +54,13 @@ This includes:
 
 ## Proof: StrataProtocol.org Is Built Using STRATA
 
-::tip
-This section demonstrates a self-referential proof: StrataProtocol.org was built *by applying the STRATA Protocol itself*. Not retrospectively documented, but actively governed from day one. The platform is both the message and the medium.
-::
-
-This platform — StrataProtocol.org — is itself the first public case study of STRATA in operation.
+This platform — StrataProtocol.org — is itself the first public case study of STRATA in operation. The platform is both the message and the medium.
 
 The platform was classified as a **Class 1 — Platformization** project: a startup-phase initiative with the strategic objective of creating reusable capability — the STRATA framework as a published, accessible protocol.
 
 Before any code was written, the project was derived into complete specifications — a vision and business case that established why the platform exists, business and product requirements that defined what it must do, and target architecture that defined how it is built.
 
-The AI copilot (GitHub Copilot) is governed by a constitutional framework — an authority chain that establishes what the copilot may do, what patterns it must follow, and what architectural decisions it cannot deviate from without explicit human instruction.
+The AI copilots (GitHub Copilot and Claude Code) are governed by a constitutional framework — an authority chain that establishes what the copilot may do, what patterns it must follow, and what architectural decisions it cannot deviate from without explicit human instruction. Its operative constitution is deployed as one edition per agent.
 
 Each feature is implemented in phases, with each phase running through the Execution Loop. The human engineer is the gate — no phase advances without sign-off. Every deviation from the plan is logged. Every decision that deviates from upstream authority is documented and justified.
 

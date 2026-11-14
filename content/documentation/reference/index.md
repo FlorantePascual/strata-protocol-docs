@@ -10,7 +10,7 @@ authors:
 date: "2026-05-25"
 ---
 
-This glossary defines the foundational vocabulary of the STRATA Protocol framework. Twelve key terms are presented here — enough to understand the framework's governance model and navigate its documentation with confidence. The complete STRATA vocabulary, covering 42 terms across all five strata, is available in the full member glossary via the link at the bottom of this page.
+This glossary defines the foundational vocabulary of the STRATA Protocol framework. Twelve key terms are presented here — enough to understand the framework's governance model and navigate its documentation with confidence. The complete STRATA vocabulary, covering 60 terms across all five strata, is available in the full member glossary via the link at the bottom of this page.
 
 ## Terms
 
@@ -24,9 +24,9 @@ The complete record of all governance artifacts produced during a project, maint
 
 #### Authority chain
 
-The five-node chain of documents that governs what an AI copilot may do and how it must reason on a given project. The chain runs from the Classification Record → Vision → BRD → PRD → Copilot Instructions, with each document deriving from and constraining the one below it.
+The five-node chain of documents that governs what an AI copilot may do and how it must reason on a given project. The nodes run Project Manifesto → Vision & Business Case → Requirements → Standards → Operative constitution, and authority flows downhill: each node derives from the nodes above it and constrains the nodes below. Node 5, the operative constitution, gathers the upstream mandate into the form an AI agent loads at session start. It is one constitution issued as one edition per agent in use, each written in that agent's native format, and every edition imposes the same mandate.
 
-*Used in:* Stratum 3 — Authority Chain; the authority chain is the constitutional document the AI copilot reads at the start of every governed session.
+*Used in:* Stratum 3 — Authority Chain; every governed session is anchored to the chain's current state, and the agent loads its edition of the operative constitution before generating any output.
 
 ### C
 
@@ -57,6 +57,14 @@ Stratum 2 of the STRATA Protocol — the process of producing governance documen
 Stratum 4 of the STRATA Protocol — the human-gated, phase-by-phase delivery cycle through which governed AI and engineer build software together. Every phase ends at a mandatory phase gate; the AI copilot cannot advance without explicit human sign-off.
 
 *Used in:* Applied during all development work; each feature's implementation is structured as a phase plan within a session folder in the execution loop.
+
+### F
+
+#### Feature Release
+
+The unit the Execution Loop runs against: the smallest set of product requirements that can be deployed and demonstrated together in one execution cycle. A Feature Release is identified as `FR-NNN-[narration]`, named for the outcome it delivers rather than the mechanism it uses, and carries the acceptance sentence the human engineer validates at its gate.
+
+*Used in:* Defined in Stratum 2 (Derivation) and executed in Stratum 4 (Execution Loop), where one session opens per Feature Release; it replaced the individual requirement as the gated unit in STRATA Protocol v1.1.
 
 ### G
 
@@ -90,12 +98,6 @@ A named access level — `public`, `customer`, `partner`, or `admin` — that co
 
 ### S
 
-#### Session
-
-The authenticated state of a registered member, stored as a sealed HttpOnly cookie with a 7-day TTL. The session carries the user's `id`, `email`, optional `name`, and `role` — the role is what the content guard checks against `PROTECTED_ROUTES` on each request.
-
-*Used in:* Applied on every page request; the session determines which content the server will serve and which navigation items Docus renders in the sidebar.
-
 #### Stratum
 
 One of the five load-bearing layers of the STRATA Protocol governance framework. Each stratum has one framing question and one output layer; the five strata are Classification, Derivation, Authority Chain, Execution Loop, and Artifact Trail.
@@ -107,7 +109,7 @@ One of the five load-bearing layers of the STRATA Protocol governance framework.
 ::u-page-c-t-a
 ---
 title: Access the complete STRATA vocabulary
-description: The full glossary contains 40+ terms covering all five strata, implementation templates, derivation processes, and comparative definitions — the complete reference for practitioners applying STRATA daily.
+description: The full glossary contains 60 terms covering all five strata, the release and constitution vocabulary, implementation templates, derivation processes, and comparative definitions — the complete reference for practitioners applying STRATA daily.
 variant: soft
 links:
   - label: Access the full glossary
